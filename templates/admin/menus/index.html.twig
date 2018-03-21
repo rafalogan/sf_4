@@ -1,0 +1,26 @@
+{% extends'admin/admin.html.twig' %}
+
+{% block body %}
+    <h1> Admim Menus </h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Matricula</th>
+            <th>Titulo</th>
+            <th>Criado em</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for menu in menus %}
+                {#<tr>#}
+                    {#<td>{{ menu.menu_id }}</td>#}
+                    {#<td>{{ menu.menu_title }}</td>#}
+                    {#<td>{{ menu.menu_createdAt | date('d/M/Y H:i:s') }}</td>#}
+                {#</tr>#}
+                <pre>
+                    {{ dump(menu) }}
+                </pre>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
