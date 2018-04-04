@@ -216,11 +216,68 @@
   </parameters>
   <services>
     <service id="service_container" class="Symfony\Component\DependencyInjection\ContainerInterface" public="true" synthetic="true"/>
+    <service id="App\Controller\Admin\AdminAlunoController" class="App\Controller\Admin\AdminAlunoController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+    </service>
+    <service id="App\Controller\Admin\AdminBannerController" class="App\Controller\Admin\AdminBannerController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+    </service>
+    <service id="App\Controller\Admin\AdminContentController" class="App\Controller\Admin\AdminContentController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+    </service>
+    <service id="App\Controller\Admin\AdminImageController" class="App\Controller\Admin\AdminImageController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+    </service>
     <service id="App\Controller\Admin\AdminMenuController" class="App\Controller\Admin\AdminMenuController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+    </service>
+    <service id="App\Controller\Admin\AdminNewsLetterController" class="App\Controller\Admin\AdminNewsLetterController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+    </service>
+    <service id="App\Controller\Admin\AdminPageController" class="App\Controller\Admin\AdminPageController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+    </service>
+    <service id="App\Controller\Admin\AdminTextController" class="App\Controller\Admin\AdminTextController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+    </service>
+    <service id="App\Controller\Admin\AdminUrlController" class="App\Controller\Admin\AdminUrlController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+    </service>
+    <service id="App\Controller\Admin\AdminUsersController" class="App\Controller\Admin\AdminUsersController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
     </service>
     <service id="App\Controller\DefautController" class="App\Controller\DefautController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
+    </service>
+    <service id="App\Form\AlunoType" class="App\Form\AlunoType" public="false" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\BannerType" class="App\Form\BannerType" public="false" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\ContentType" class="App\Form\ContentType" public="false" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\ImageType" class="App\Form\ImageType" public="false" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\MenuType" class="App\Form\MenuType" public="false" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\NewsLetterType" class="App\Form\NewsLetterType" public="false" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\PageType" class="App\Form\PageType" public="false" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\SubMenuType" class="App\Form\SubMenuType" public="false" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\TextType" class="App\Form\TextType" public="false" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\UsersType" class="App\Form\UsersType" public="false" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
     </service>
     <service id="App\Repository\AlunoRepository" class="App\Repository\AlunoRepository" public="false" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
@@ -295,7 +352,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
       <tag name="controller.argument_value_resolver" priority="-50"/>
-      <argument type="service" id="service_locator.v5YYcZp"/>
+      <argument type="service" id="service_locator.PLcAWum"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false">
       <tag name="controller.argument_value_resolver" priority="-100"/>
@@ -421,14 +478,6 @@
       </call>
       <call method="addListener">
         <argument>kernel.request</argument>
-        <argument type="collection">
-          <argument type="service" id="debug.debug_handlers_listener"/>
-          <argument>configure</argument>
-        </argument>
-        <argument>2048</argument>
-      </call>
-      <call method="addListener">
-        <argument>console.command</argument>
         <argument type="collection">
           <argument type="service" id="debug.debug_handlers_listener"/>
           <argument>configure</argument>
@@ -692,9 +741,20 @@
       <argument type="service" id="form.registry"/>
       <argument type="collection">
         <argument>Symfony\Component\Form\Extension\Core\Type</argument>
+        <argument>App\Form</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
       </argument>
       <argument type="collection">
+        <argument>App\Form\AlunoType</argument>
+        <argument>App\Form\BannerType</argument>
+        <argument>App\Form\ContentType</argument>
+        <argument>App\Form\ImageType</argument>
+        <argument>App\Form\MenuType</argument>
+        <argument>App\Form\NewsLetterType</argument>
+        <argument>App\Form\PageType</argument>
+        <argument>App\Form\SubMenuType</argument>
+        <argument>App\Form\TextType</argument>
+        <argument>App\Form\UsersType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type\EntityType</argument>
@@ -907,7 +967,7 @@
       <argument type="service" id="form.resolved_type_factory"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id="service_locator.nA6cUNd"/>
+      <argument type="service" id="service_locator.P.Aj7Fj"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.http_foundation"/>
@@ -1924,10 +1984,48 @@
         <argument>lint:twig</argument>
       </call>
     </service>
+    <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.App\Controller\Admin\AdminAlunoController" class="App\Controller\Admin\AdminAlunoController" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.App\Controller\Admin\AdminAlunoController" class="App\Controller\Admin\AdminAlunoController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.App\Controller\Admin\AdminBannerController" class="App\Controller\Admin\AdminBannerController" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.App\Controller\Admin\AdminBannerController" class="App\Controller\Admin\AdminBannerController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.App\Controller\Admin\AdminContentController" class="App\Controller\Admin\AdminContentController" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.App\Controller\Admin\AdminContentController" class="App\Controller\Admin\AdminContentController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.App\Controller\Admin\AdminImageController" class="App\Controller\Admin\AdminImageController" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.App\Controller\Admin\AdminImageController" class="App\Controller\Admin\AdminImageController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.App\Controller\Admin\AdminMenuController" class="App\Controller\Admin\AdminMenuController" public="false" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.App\Controller\Admin\AdminMenuController" class="App\Controller\Admin\AdminMenuController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.App\Controller\Admin\AdminNewsLetterController" class="App\Controller\Admin\AdminNewsLetterController" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.App\Controller\Admin\AdminNewsLetterController" class="App\Controller\Admin\AdminNewsLetterController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.App\Controller\Admin\AdminPageController" class="App\Controller\Admin\AdminPageController" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.App\Controller\Admin\AdminPageController" class="App\Controller\Admin\AdminPageController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.App\Controller\Admin\AdminTextController" class="App\Controller\Admin\AdminTextController" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.App\Controller\Admin\AdminTextController" class="App\Controller\Admin\AdminTextController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.App\Controller\Admin\AdminUrlController" class="App\Controller\Admin\AdminUrlController" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.App\Controller\Admin\AdminUrlController" class="App\Controller\Admin\AdminUrlController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.App\Controller\Admin\AdminUsersController" class="App\Controller\Admin\AdminUsersController" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.App\Controller\Admin\AdminUsersController" class="App\Controller\Admin\AdminUsersController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.App\Controller\DefautController" class="App\Controller\DefautController" public="false" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.App\Controller\DefautController" class="App\Controller\DefautController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\AlunoType" class="App\Form\AlunoType" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.App\Form\AlunoType" class="App\Form\AlunoType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\BannerType" class="App\Form\BannerType" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.App\Form\BannerType" class="App\Form\BannerType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ContentType" class="App\Form\ContentType" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.App\Form\ContentType" class="App\Form\ContentType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ImageType" class="App\Form\ImageType" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.App\Form\ImageType" class="App\Form\ImageType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\MenuType" class="App\Form\MenuType" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.App\Form\MenuType" class="App\Form\MenuType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\NewsLetterType" class="App\Form\NewsLetterType" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.App\Form\NewsLetterType" class="App\Form\NewsLetterType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\PageType" class="App\Form\PageType" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.App\Form\PageType" class="App\Form\PageType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\SubMenuType" class="App\Form\SubMenuType" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.App\Form\SubMenuType" class="App\Form\SubMenuType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\TextType" class="App\Form\TextType" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.App\Form\TextType" class="App\Form\TextType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\UsersType" class="App\Form\UsersType" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.App\Form\UsersType" class="App\Form\UsersType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\AlunoRepository" class="App\Repository\AlunoRepository" public="false" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.App\Repository\AlunoRepository" class="App\Repository\AlunoRepository" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\BannerRepository" class="App\Repository\BannerRepository" public="false" autowire="true" abstract="true"/>
@@ -2068,7 +2166,11 @@
         <argument>make:migration</argument>
       </call>
     </service>
-    <service id="service_locator.v5YYcZp" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="service_locator.4daHXYX" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection"/>
+    </service>
+    <service id="service_locator.PLcAWum" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection"/>
     </service>
@@ -2192,9 +2294,19 @@
         <argument key="inline" type="service" id="fragment.renderer.inline"/>
       </argument>
     </service>
-    <service id="service_locator.nA6cUNd" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="service_locator.P.Aj7Fj" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Form\AlunoType" type="service" id="App\Form\AlunoType"/>
+        <argument key="App\Form\BannerType" type="service" id="App\Form\BannerType"/>
+        <argument key="App\Form\ContentType" type="service" id="App\Form\ContentType"/>
+        <argument key="App\Form\ImageType" type="service" id="App\Form\ImageType"/>
+        <argument key="App\Form\MenuType" type="service" id="App\Form\MenuType"/>
+        <argument key="App\Form\NewsLetterType" type="service" id="App\Form\NewsLetterType"/>
+        <argument key="App\Form\PageType" type="service" id="App\Form\PageType"/>
+        <argument key="App\Form\SubMenuType" type="service" id="App\Form\SubMenuType"/>
+        <argument key="App\Form\TextType" type="service" id="App\Form\TextType"/>
+        <argument key="App\Form\UsersType" type="service" id="App\Form\UsersType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service" id="form.type.choice"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="service" id="form.type.form"/>

@@ -1,0 +1,33 @@
+{% extends'admin/admin.html.twig' %}
+
+{% block title %}Hello {{ controller_name }}!{% endblock %}
+
+{% block body %}
+    {% include '/includes/messages.html.twig' %}
+
+    <h1> Admim Menus </h1>
+    <a href="{{ path('admin_menu_novo') }}">Novo Menu</a>
+    <hr>
+    <table>
+        <thead>
+        <tr>
+            <th>Matricula</th>
+            <th>Titulo</th>
+            <th>Criado em</th>
+            <th>Editar</th>
+            <th>Deletar</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for aluno in alunos %}
+            <tr>
+                <td>{{ aluno.menuId }}</td>
+                <td><a href="{{ path('admin_menu_edit', {'menu_id': aluno.menuId }) }}">{{ aluno.menuTitle }}</a></td>
+                <td>{{ aluno.menuCreatedAt | date('d/M/Y H:i:s') }}</td>
+                <td><a href="{{ path('admin_menu_edit', {'menu_id': aluno.menuId }) }}">Editar</a></td>
+                <td><a href="{{ path('admin_menu_delet',{'menu_id': aluno.menuId }) }}">Deletar</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

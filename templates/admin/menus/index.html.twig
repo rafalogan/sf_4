@@ -1,25 +1,30 @@
 {% extends'admin/admin.html.twig' %}
 
 {% block body %}
+    {% include '/includes/messages.html.twig' %}
+
     <h1> Admim Menus </h1>
+    <a href="{{ path('admin_menu_novo') }}">Novo Menu</a>
+    <hr>
     <table>
         <thead>
         <tr>
             <th>Matricula</th>
             <th>Titulo</th>
             <th>Criado em</th>
+            <th>Editar</th>
+            <th>Deletar</th>
         </tr>
         </thead>
         <tbody>
             {% for menu in menus %}
-                {#<tr>#}
-                    {#<td>{{ menu.menu_id }}</td>#}
-                    {#<td>{{ menu.menu_title }}</td>#}
-                    {#<td>{{ menu.menu_createdAt | date('d/M/Y H:i:s') }}</td>#}
-                {#</tr>#}
-                <pre>
-                    {{ dump(menu) }}
-                </pre>
+                <tr>
+                    <td>{{ menu.menuId }}</td>
+                    <td><a href="{{ path('admin_menu_edit', {'menu_id': menu.menuId }) }}">{{ menu.menuTitle }}</a></td>
+                    <td>{{ menu.menuCreatedAt | date('d/M/Y H:i:s') }}</td>
+                    <td><a href="{{ path('admin_menu_edit', {'menu_id': menu.menuId }) }}">Editar</a></td>
+                    <td><a href="{{ path('admin_menu_delet',{'menu_id': menu.menuId }) }}">Deletar</a></td>
+                </tr>
             {% endfor %}
         </tbody>
     </table>
